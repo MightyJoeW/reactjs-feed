@@ -5,7 +5,7 @@ const subreddit = 'reactjs';
 
 const ReactThread = () => {
   const [feed, setFeed] = useState([]);
-  const [baseUrl, setBaseUrl] = useState('https://www.reddit.com');
+  const [baseUrl] = useState('https://www.reddit.com');
 
   useEffect(() => {
     axios.get(`https://www.reddit.com/r/${subreddit}.json`).then(res => {
@@ -17,12 +17,12 @@ const ReactThread = () => {
     <>
       <ul>
         {feed.map(post => {
-          // return <li a href={`baseUrl{post.data.permalink}`}> {post.data.title}</li>
           return (
-            <>
-              <a key={post.data.id} href={`${baseUrl}${post.data.permalink}`}> {post.data.title}</a>
-              <br />
-            </>
+            <div key={post.data.id}>
+              <p>
+                <a href={`${baseUrl}${post.data.permalink}`}>{post.data.title}</a>
+              </p>
+            </div>
           )
         })}
       </ul>
