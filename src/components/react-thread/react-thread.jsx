@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
 
 const subreddit = 'reactjs';
@@ -18,11 +18,11 @@ const ReactThread = () => {
       <ul>
         {feed.map(post => {
           return (
-            <div key={post.data.id}>
+            <Fragment key={post.data.id}>
               <p>
                 <a href={`${baseUrl}${post.data.permalink}`}>{post.data.title}</a>
               </p>
-            </div>
+            </Fragment>
           )
         })}
       </ul>
