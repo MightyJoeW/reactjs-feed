@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
-import ReactThread from './components/react-thread/react-thread'
+const ReactThread = React.lazy(() => import('./components/react-thread/react-thread'));
 
 const App = () => {
   return (
     <div className="App">
-      <ReactThread />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ReactThread />
+      </Suspense>
     </div>
   );
 }
