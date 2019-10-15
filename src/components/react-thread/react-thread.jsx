@@ -15,13 +15,14 @@ const ReactThread = () => {
 
   return (
     <>
+      <h1> /r/reactjs </h1>
       <ul>
         {feed.map(post => {
           return (
             <Fragment key={post.data.id}>
-              <p>
+              <li>
                 <a href={`${baseUrl}${post.data.permalink}`}>{post.data.title}</a>
-              </p>
+              </li>
             </Fragment>
           )
         })}
