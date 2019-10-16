@@ -1,14 +1,18 @@
-import React, { Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 
-const ReactThread = React.lazy(() => import('./components/react-thread/react-thread'));
+const ErrorBoundary = lazy(() => import('./components/error-boundary/error-boundary'));
+const ReactThread = lazy(() => import('./components/react-thread/react-thread'));
 
 const App = () => {
   return (
-    <div className="App">
+    <>
+      <h1> /r/reactjs </h1>
       <Suspense fallback={<div>Loading...</div>}>
-        <ReactThread />
+        <ErrorBoundary>
+          <ReactThread />
+        </ErrorBoundary>
       </Suspense>
-    </div>
+    </>
   );
 }
 
